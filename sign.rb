@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'rufus-scheduler'
 
+#This code is a modified version of code that used to communicate with a LED Sign.
+#Anything that doesn't make sense is probably due to that.
 class SignHandler
   def initialize(default_message)
     @messages = Hash.new
@@ -11,16 +13,6 @@ class SignHandler
       green: "<CM>",
       rainbow: "<CP>"
     }
-=begin
-    @transitions = {
-      close: "<FG>",
-      dots: "<FR>",
-      scrollup: "<FI>",
-      scrolldown: "<FJ>",
-      none: " {0} "
-    }
-=end
-
     @scheduler = Rufus::Scheduler.new
     @default = default_message
     update
@@ -31,12 +23,10 @@ class SignHandler
   #function to add a new message to the sign
   def add(uuid, message, color = nil, timer = nil, default = false)
     color ||= :red
-#    transition ||= :close
     timer ||= '30m'
     @messages[uuid] = {
       message: message,
       color: color,
-#      transition: transition,
       timer: timer
     }
     @scheduler.in timer do
