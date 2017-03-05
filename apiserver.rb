@@ -46,7 +46,7 @@ class SignApiServer < Sinatra::Base
 
   delete '/message/:uuid' do |id| #delete message [uuid]
     raise not_found if sign.messages[id] == nil
-    sign.delete(id)
+    sign.delete(id).to_json
   end
 
   put '/message/:uuid' do |id| #change message [uuid]

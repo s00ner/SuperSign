@@ -3,6 +3,7 @@ require 'rufus-scheduler'
 
 #This code is a modified version of code that used to communicate with a LED Sign.
 #Anything that doesn't make sense is probably due to that.
+
 class SignHandler
   def initialize(default_message)
     @messages = Hash.new
