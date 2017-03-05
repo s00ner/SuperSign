@@ -1,0 +1,23 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+  <script>
+
+    function success(data){
+      console.log('hitit');
+      console.log(data);
+      testVar = data;
+
+    }
+    function hitit(){
+      $.ajax({
+        url:"http://10.0.0.175:9292/message/all",
+        success: success
+      });
+    }
+
+  </script>
+</body>
+</html>
